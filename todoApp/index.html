@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body> 
+    <div class="container">
+        <h2>Todo List</h2>
+        <div class="header">
+            <div class="text-input">
+            <input type="text" id="todoText" placeholder="Title ....">         
+            <span onclick="addELement()" class="addBtn"><i class="fas fa-plus"></i></span>
+        </div>
+        </div>
+
+        <ul id="todoUl" class="myUl">
+        </ul>
+    
+
+    </div>
+
+    <script>
+        let myNodelist = document.getElementsByTagName('li');
+        let i ;
+        
+        // add icons to lists
+        for (i=0;i< myNodelist.length;i++) {
+            
+            let span = document.createElement('span');
+            let icon = document.createElement('i');
+            icon.className = 'fas';
+            icon.className += ' fa-trash';
+            span.className= 'trash';
+            span.className += ' close'
+            span.appendChild(icon);
+            myNodelist[i].appendChild(span);
+
+
+            
+            let span2 = document.createElement('span');
+            let icon2 = document.createElement('i');
+            icon2.className ='fas';
+            icon2.className += ' fa-check';
+            span2.appendChild(icon2);
+            span2.className ='checked';
+            myNodelist[i].appendChild(span2);
+        }
+
+        var close = document.getElementsByClassName('close');
+        
+        for (i=0 ; i < close.length;i++) {
+            close[i].onclick = function (){
+                this.parentElement.style.display='none';
+            }
+        }
+
+        let list = document.getElementById('todoUl');
+        list.addEventListener('click',(ev)=>{
+        if (ev.target.tagName === 'LI') {
+        ev.target.classList.toggle('selected');
+        }});
+       
+        function addELement() {
+            let li = document.createElement('li');
+            let inputValue = document.getElementById('todoText').value;
+            let t = document.createTextNode(inputValue);
+            li.append(t); 
+            let ul = document.getElementById('todoUl');
+            if(inputValue===''){
+                alert('Enter a valid value !');
+            }
+            else {
+                ul.appendChild(li);
+            }
+
+            document.getElementById('todoText').value='';
+        
+            let span = document.createElement('span');
+            let icon = document.createElement('i');
+            icon.className = 'fas';
+            icon.className += ' fa-trash';
+            span.className= 'trash';
+            span.className += ' close'
+            span.appendChild(icon);
+            myNodelist[i].appendChild(span);
+
+
+            
+            let span2 = document.createElement('span');
+            let icon2 = document.createElement('i');
+            icon2.className ='fas';
+            icon2.className += ' fa-check';
+            span2.appendChild(icon2);
+            span2.className ='checked';
+            myNodelist[i].appendChild(span2);
+
+            for (i=0;i < close.length;i++) {
+                close[i].onclick= function() {
+                    this.parentElement.style.display='none';
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

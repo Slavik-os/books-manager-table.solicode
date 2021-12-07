@@ -1,0 +1,139 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+* {
+    padding : 0;
+    margin : 0 ;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    background: linear-gradient(138.69deg, #364B99 23.39%, #54279D 72.72%);
+    background-repeat: no-repeat;
+}
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(138.69deg, #364B99 23.39%, #54279D 72.72%);
+    text-align: center;
+}
+.header {
+    padding-top : 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+h2 {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: bold;
+font-size: 55px;
+line-height: 64px;
+letter-spacing: 0.11em;
+text-align: center;
+color: #FFFFFF;
+padding-top : 5%;
+text-shadow: 9px 10px 4px rgba(0, 0, 0, 0.25);
+}
+.text-input {
+    width: 518px;
+    height:59px;
+    position: relative;
+    display: flex;
+}
+input[type=text]{
+    width: 518px;
+    height:59px;
+    padding : 10px;
+    margin : 0 ;
+    border: none;
+    font-size : 16px;
+    box-shadow: 11px 7px 4px rgba(0, 0, 0, 0.25);
+}
+
+input[type=text]::placeholder {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0.08em;
+
+color: #827676;
+
+}
+  .addBtn  {
+    position: absolute;
+    top:0;
+    right: 0;
+    cursor: pointer;
+    height: 59px;
+    width:  54px;
+    background: #364B99;
+    padding : 10px;
+    margin : 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fas {
+    color : #fff;
+    font-size : 20px;
+}
+
+
+.myUl {
+    list-style: none;
+    padding-top : 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align:  justify;
+}
+.myUl li:hover {
+    background: #ddd;
+}
+li {
+    cursor: pointer;
+    position : relative;
+    margin :30px;
+    width: 518px;
+    height: 59px;
+    background: #fff;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+    letter-spacing: 0.08em;
+    padding : 10px 10px 10px 70px;
+    color: #827676;
+    box-shadow: 11px 7px 4px rgba(0, 0, 0, 0.25);
+}
+
+.trash , .checked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width : 54px;
+    height: inherit;
+    position : absolute;
+}
+.trash {
+    background: #4C1F95;
+    top : 0;
+    right : 0;
+}
+.checked {
+    top : 0 ;
+    right : 10%;
+    background: #364B99;
+}
+
+.selected {
+    background : #888;
+    text-decoration: line-through;
+    color : #000;
+
+}

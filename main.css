@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+* {
+    padding: 0;
+    margin : 0 ;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(211.58deg, rgba(114, 9, 110, 0.93) 19.03%, rgba(17, 62, 130, 0.78) 74%);
+}
+.header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.header h2 {
+    padding : 5%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 55px;
+    line-height: 64px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    text-shadow: 13px 0px 11px rgba(0, 0, 0, 0.58);
+}
+.content-holder {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+.text-input {
+    margin : 0 3rem 3rem 0;
+    position: relative;
+    width: 518px;
+    height:45px;
+
+}
+input[type=text]{
+    background: #fff;
+    width: 518px;
+    height:45px;
+    padding : 10px;
+    margin : 0 ;
+    border: none;
+    font-size : 16px;
+    box-shadow: 11px 7px 4px rgba(0, 0, 0, 0.25);
+}
+input[type=date] {
+    color: #827676;
+    padding-left : 10%;
+    background: #fff;
+    font-size : 22px;
+    box-shadow: 11px 7px 4px rgba(0, 0, 0, 0.25);
+    width: 518px;
+    height:45px;
+}
+
+input[type=text]::placeholder {
+    position: relative;
+    font-family: 'Roboto';
+    padding : 10%;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0.08em;
+    color: #827676;
+
+}
+  .LabelIcon  {
+    position: absolute;
+    top:0;
+    right: 0;
+    cursor: pointer;
+    height: 45px;
+    width:  54px;
+    background: #342D4A;
+    padding : 10px;
+    margin : 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.far , .fas{
+    font-size: 22px;
+    color : #fff;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    font-size: 50px;
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+.content-holder button {
+    cursor: pointer;
+    border : none ;
+    width: 236px;
+    height: 45px;
+    background: #342D4A;
+    color : #fff;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.04em;
+}
+    .select-type {
+        position: relative;
+        width: 518px;
+        background: #fff;
+        height:45px;
+        display: block;
+        padding-left : 6%;
+    }
+    .select-type select {
+        border : none;
+        padding : 10px;
+        height: 45px;
+        border : none;
+        font-family: 'Roboto';
+        font-size : 22px;
+        color : #827676;
+        border : 0;
+        outline: 0;
+    }
