@@ -57,8 +57,7 @@ input[type=text]::placeholder {
     font-size: 22px;
     line-height: 26px;
     letter-spacing: 0.08em;
-
-color: #827676;
+    color: #827676;
 
 }
   .addBtn  {

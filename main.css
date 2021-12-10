@@ -49,6 +49,7 @@ input[type=text]{
     box-shadow: 11px 7px 4px rgba(0, 0, 0, 0.25);
 }
 input[type=date] {
+    border : none ;
     color: #827676;
     padding-left : 10%;
     background: #fff;
@@ -56,6 +57,22 @@ input[type=date] {
     box-shadow: 11px 7px 4px rgba(0, 0, 0, 0.25);
     width: 518px;
     height:45px;
+}
+input[type=radio] {
+    width: 37px;
+    height: 36px;
+}
+.radio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+.radio span{display: flex;align-items: center;}
+.radio span label {
+    padding-left: 10px;
+    color : #fff;
+    font-size : 22px;
+    font-family: 'Roboto';
 }
 
 input[type=text]::placeholder {
@@ -134,3 +151,63 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         border : 0;
         outline: 0;
     }
+
+    #table-container {
+        padding : 5%;
+        width: 100%;
+        display: none;
+        justify-content: center;
+    }
+    table {
+        font-family: 'Roboto';
+        background: #fff;
+        width: 1415px   ;
+        margin : 0 ;
+        border : none ;
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+    table th {
+        letter-spacing: 0.04em;
+        font-size : 22px;
+        padding-left : 80px;
+        font-weight: normal;
+        background: #342D4A;
+        padding-top: 12px;
+        border-collapse: collapse;
+        margin : 0 ;
+        padding-bottom: 12px;
+        text-align: left;
+        color: white;
+    }
+    table tr td{
+        letter-spacing: 0.04em;
+        color: #7B7676;
+        height: 75px;
+        padding-left : 80px;
+    }
+    table tr:hover {
+        background : #ddd;
+    }
+
+    table tr:nth-child(odd){
+        background:  #eceaea;
+    }
+
+    table tr:hover {
+        background : #ddd;
+    }
+    .fa-trash-alt {
+        cursor: pointer;
+        color : red ;
+        padding-left : 10px;
+    }
+    .fa-edit , .fa-check{
+        cursor: pointer;
+        color  : #000;
+    }
+    td[contenteditable="true"]:focus {
+        outline-color : #72096E;
+
+    }
+    
