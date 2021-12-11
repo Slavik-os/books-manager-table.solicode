@@ -48,12 +48,14 @@
                 <input id="money" placeholder="Price...." type="text">
                 <span class="LabelIcon"><i class="fas fa-money-bill-wave"></i></span>
             </div>
-                <button onclick="addToTable()" id="sbt">Submit</button>    
-            
+                <button onclick="check()" id="sbt">Submit</button>    
+                <div id="validation-response">
+                    test
+                </div> 
         </div>
     </div>
     <div id="table-container">
-       <table class="table-manager" cellspacing="0" cellpadding="0">
+       <table id="table-manager" cellspacing="0" cellpadding="0">
 
             <tr>
                 <th>Date</th>
@@ -66,183 +68,7 @@
             </tr>
         </table>
     </div>
-    <script>
-
-        // Create  a td each time  . 
-
-        function addRow(content){
-            let td = document.createElement('td');
-            td.appendChild(document.createTextNode(content));
-            row.appendChild(td);
-            table.appendChild(row);
-        }
-    
-        function addIcons(){
-            let td = document.createElement('td');
-            let edit = document.createElement('i');
-            let trash = document.createElement('i');
-            edit.className = 'fas';
-            edit.className+=' fa-edit'
-            edit.setAttribute('id','edite-icon');
-            edit.setAttribute('onclick','setEdite()');
-            edit.className+=' edite'
-
-            td.appendChild(edit);
-
-            trash.className = 'fas';
-            trash.className+=' fa-trash-alt';
-            trash.className+=' delete'
-            
-            td.appendChild(trash);
-            row.append(td);
-        }
-        
-        
-
-        // To not preduse a mess in global scooping .
-        let row;
-        let table;
-
-        function addToTable() { 
-
-            document.getElementById('table-container').style.display='flex';
-
-            let edit = document.createElement('i');
-            let trash = document.createElement('i');
-           
-            // creat row when clicked 
-            table = document.querySelector('.table-manager');
-            row = document.createElement('tr');
-            row.className = 'row';
-            
-            // get data from user
-            let date = document.querySelectorAll('input[type="date"]');
-            let  dateValue= date[0].value;
-            let d = new Date(dateValue);
-            let dateTr = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
-          
-            let price = parseFloat(document.getElementById('money').value.trim());
-            //price = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            console.log(price);
-            let name = document.getElementById('auth-name').value.trim();
-            
-            let selected = document.getElementById('bookTypes').value;
-
-            let title = document.getElementById('title').value;
-
-            let rdbs = document.querySelectorAll('input[name="radAnswer"]');
-            let lang;
-                for (let i=0;i < rdbs.length;i++) {
-                    if (rdbs[i].checked) {
-                        lang = rdbs[i].value
-                    }
-                }
-
-            // data end
-
-            // append data
-            
-            addRow(dateTr);
-            const numReg = new RegExp('[0-9]');
-            
-            (!numReg.test(price))?alert('Invalid value !'):addRow(price);
-            addRow(selected);
-            addRow(title);
-            addRow(name);
-            addRow(lang);
-            addIcons(); 
-            
-            
-            // delete row 
-
-            let remove = document.getElementsByClassName('delete');
-            for (let i = 0; i < remove.length ;i ++){
-                remove[i].onclick =()=> {
-                    remove[i].closest('.row').style.display ='none';
-                }
-            }
-            
-            // edite row
-
-
-            function changeIcon(iconRemove,iconReplace){
-                let editeIcon = pChilds[pChilds.length -1];
-                let c = editeIcon.children[0];
-                c.classList.remove(iconRemove);
-                c.className +=' '+iconReplace;
-                //c.setAttribute('onclick','hello()'); 
-        }
-
-     
-            // function editeContent(c){
-            //     c.onclick = ()=>{
-            //         for (i=0;i < pChilds.length-1;i++){
-                    
-            //             pChilds[i].setAttribute('contenteditable','false');
-            //         }    
-            //     }    
-            
-           // }
-         
-
-            //  valid the checking
-
-    }
-
-    let pChilds;
-
-    function hello() {
-            let e = document.getElementsByClassName('fa-check'); 
-            for (let z=0;z < pChilds.length;z++){
-                if(pChilds[z].innerHTML==''){
-                    alert('Please fill all the inputs !');
-                    break
-                }
-            }
-            for (let z=0;z < pChilds.length;z++){
-            pChilds[z].setAttribute('contenteditable','false');
-            }
-            let check = document.getElementById('check-icon');
-                check.classList.remove('fa-check');
-                check.className +=' fa-edit';
-                check.removeAttribute('id');
-                check.setAttribute('id','edite-icon');
-                check.setAttribute('onclick','setEdite()');
-            }
-        
-
-        function setEdite(){
-           
-            let e = document.getElementsByClassName('fa-edit');
-            for(i=0;i < e.length;i++){
-                pChilds = e[i].closest('.row').children;
-            }
-            for(j=0;j < pChilds.length-1;j++){
-                pChilds[j].setAttribute('contenteditable','true');
-            }
-            let edite = document.getElementById('edite-icon');
-                edite.classList.remove('fa-edit');
-                edite.classList.remove('edite');
-                edite.className +=' fa-check';   
-                edite.removeAttribute('id');
-                edite.setAttribute('id','check-icon');
-                edite.setAttribute('onclick','hello()');
-        }
-
-        // grab type of checked input 
-        // document.getElementById('sbt').addEventListener('click',()=>{
-        //     let rdbs = document.querySelectorAll('input[name="radAnswer"]');
-        //     let s ;
-        //     let i ; 
-        //     for (i=0;i < rdbs.length;i++) {
-        //         if (rdbs[i].checked) {
-        //             console.log(rdbs[i].value)
-        //         }
-        //     }
-            
-        // });
-        
-    </script>
+    <script src='js.js'></script>
 
 
 </body>
