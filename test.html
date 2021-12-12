@@ -7,18 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-  <button onclick="clicked()">click</button>  
-  <button id='z'>button</button>
+    <input type="text" id="value">
+    <button onclick="submit()">submit</button>
   <script>
-      function clicked() {
-        let z = document.getElementById('z');
-        z.setAttribute('onclick','hello()')
-    }
-        function hello() {
-            function h(){
-                return 'none';
+      function submit(){
+          let t = document.getElementById('value');
+          let l = []
+        
+         if (t.value.length > 20){
+             l = t.value.split('');
+             for (let i = 0; 19 < l.length;i++){
+                l.splice(l.length -1);
             }
+         }
+         console.log(l.join('')+'...');
         }
+      
   </script>
 </body>
 </html>

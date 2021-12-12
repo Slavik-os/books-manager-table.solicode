@@ -216,4 +216,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         font-family: 'Roboto';
         text-shadow: 13px 0px 11px rgba(0, 0, 0, 0.58);
         color : #fff;
+        text-align: center;
     }
