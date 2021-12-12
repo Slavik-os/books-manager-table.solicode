@@ -1,4 +1,6 @@
 // create a new row Elements 
+let edite ; 
+let pChilds;
 function addRow(content){
             let td = document.createElement('td');
             td.appendChild(document.createTextNode(content));
@@ -13,9 +15,8 @@ function addIcons(){
     let trash = document.createElement('i');
     edit.className = 'fas';
     edit.className+=' fa-edit'
-    edit.setAttribute('id','edite-icon');
-    edit.setAttribute('onclick','setEdite()');
-    edit.className+=' edite'
+    //edit.setAttribute('id','edite-icon');
+   // edit.setAttribute('onclick','setEdite()');
 
     td.appendChild(edit);
 
@@ -32,9 +33,9 @@ function addIcons(){
         // To not preduse a mess in global scooping .
         let row;
         let table;
-        let pChilds;
         
         function check() {
+            document.getElementById('validation-response').innerHTML='';
             // get data from user
             let date = document.querySelectorAll('input[type="date"]');
             let  dateValue= date[0].value;
@@ -65,13 +66,12 @@ function addIcons(){
                 }
              
             let er = [];
-            priceReg= '(^(\\d{1,4},\\d{1,5})$)|(^(\\d{1,5})$)';
+            priceReg= '(^(\\d{1,5},\\d{1,2})$)|(^(\\d{1,5})$)';
             function setErr(namevalue,elemnt,reg,message){
                 const validReg = RegExp(reg,'m');
                 if(!validReg.test(namevalue)) {
                     
                     er.push(true);
-                    console.log('not : '+namevalue);
                     elemnt.style.border = '3px solid #e30729' ;
                 }
                 
@@ -86,12 +86,12 @@ function addIcons(){
             
             if(lang === undefined){
                 er.push('true');
-                console.log('no langue selected ');
             }
             
             
             function addToTable() {
-                // declare here to avoid local scooping only  
+                 edite = document.getElementsByClassName('fa-edit');
+                 // declare here to avoid local scooping only  
                 table = document.querySelector('#table-manager');
                 row = document.createElement('tr');
                 row.className = 'row';
@@ -141,44 +141,51 @@ function addIcons(){
             }else {
                 addToTable();
             }
-        }        
-        
+        if(edite != undefined){
+            createEdite();    
+            }
+        } 
+        function createEdite(){
+            edite = document.getElementsByClassName('fa-edit');
+            for (let i = 0 ; i < edite.length ;i++){
+                edite[i].onclick = ()=>{
+                    //edite[i].classList.remove('fa-edit');
+                        pChilds =  edite[i].closest('.row').children;
+                        edite[i].setAttribute('onclick','saveEdite()');
+                        edite[i].className += ' fa-check';
+                        edite[i].classList.remove('fa-edit');
+                        for(j=0;j < pChilds.length-1;j++){
+                            pChilds[j].setAttribute('contenteditable','true');
+                        }
+                }
+            
+            }
 
-    // Toggle check to edite 
-    function hello() {
-        let e = document.getElementsByClassName('fa-check'); 
-        for (let z=0;z < pChilds.length;z++){
-            if(pChilds[z].innerHTML==''){
-                alert('Please fill all the inputs !');
-                break
+        }       
+
+        function saveEdite(){
+            let check = document.getElementsByClassName('fa-check');
+            if(check.length === 0) {
+            createEdite();
+            
+            } else{
+                for(let i =0 ; i < check.length;i++){
+                for(j=0;j < pChilds.length-1;j++){
+                    pChilds[j].setAttribute('contenteditable','false');
+                }
+                check[i].className +=' fa-edit';
+                check[i].classList.remove('fa-check');
             }
         }
-        for (let z=0;z < pChilds.length;z++){
-        pChilds[z].setAttribute('contenteditable','false');
         }
-        let check = document.getElementById('check-icon');
-            check.classList.remove('fa-check');
-            check.className +=' fa-edit';
-            check.removeAttribute('id');
-            check.setAttribute('id','edite-icon');
-            check.setAttribute('onclick','setEdite()');
-        }
-        
-    // Toggle Edite to check 
-    function setEdite(){
-        
-        let e = document.getElementsByClassName('fa-edit');
-        for(i=0;i < e.length;i++){
-            pChilds = e[i].closest('.row').children;
-        }
-        for(j=0;j < pChilds.length-1;j++){
-            pChilds[j].setAttribute('contenteditable','true');
-        }
-            let edite = document.getElementById('edite-icon');
-            edite.classList.remove('fa-edit');
-            edite.classList.remove('edite');
-            edite.className +=' fa-check';   
-            edite.removeAttribute('id');
-            edite.setAttribute('id','check-icon');
-            edite.setAttribute('onclick','hello()');
-    }
+
+    // Toggle check to edite 
+
+
+    // if (!edite){
+//     for (let i = 0 ; i < edite.length;i++){
+//     edite[i].onclick=()=>{
+//         edite[i].style.display='none';
+//     }
+// }
+// }

@@ -3,6 +3,8 @@
     padding: 0;
     margin : 0 ;
     box-sizing: border-box;
+    outline: none;
+
 }
 body {
     width: 100%;
@@ -132,6 +134,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 26px;
     letter-spacing: 0.04em;
 }
+::selection{
+    color : red ;
+}
+
+option {
+    -webkit-appearance: menulist-button;
+    color:#000;
+    padding : 100px;
+    background-color: #fff;
+    outline: none;
+    border : none ;
+    }
     .select-type {
         position: relative;
         width: 518px;
