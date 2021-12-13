@@ -15,8 +15,6 @@ function addIcons(){
     let trash = document.createElement('i');
     edit.className = 'fas';
     edit.className+=' fa-edit'
-    //edit.setAttribute('id','edite-icon');
-   // edit.setAttribute('onclick','setEdite()');
 
     td.appendChild(edit);
 
@@ -47,7 +45,6 @@ function addIcons(){
             priceF.style.border = 'none';
             
             price = priceF.value.trim();
-            price = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             let nameV = document.getElementById('auth-name');
             nameV.style.border ='none';
             let name = nameV.value.trim();
@@ -68,7 +65,7 @@ function addIcons(){
             let er = [];
             priceReg= '(^(\\d{1,5},\\d{1,2})$)|(^(\\d{1,5})$)';
             function setErr(namevalue,elemnt,reg,message){
-                const validReg = RegExp(reg,'m');
+                const validReg = RegExp(reg,'g');
                 if(!validReg.test(namevalue)) {
                     
                     er.push(true);
@@ -149,7 +146,6 @@ function addIcons(){
             edite = document.getElementsByClassName('fa-edit');
             for (let i = 0 ; i < edite.length ;i++){
                 edite[i].onclick = ()=>{
-                    //edite[i].classList.remove('fa-edit');
                         pChilds =  edite[i].closest('.row').children;
                         edite[i].setAttribute('onclick','saveEdite()');
                         edite[i].className += ' fa-check';
@@ -178,14 +174,3 @@ function addIcons(){
             }
         }
         }
-
-    // Toggle check to edite 
-
-
-    // if (!edite){
-//     for (let i = 0 ; i < edite.length;i++){
-//     edite[i].onclick=()=>{
-//         edite[i].style.display='none';
-//     }
-// }
-// }
