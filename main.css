@@ -3,8 +3,6 @@
     padding: 0;
     margin : 0 ;
     box-sizing: border-box;
-    outline: none;
-
 }
 body {
     width: 100%;
@@ -221,8 +219,7 @@ option {
         color  : #000;
     }
     td[contenteditable="true"]:focus {
-        outline-color : #72096E;
-
+        outline: 3px solid #72096E;
     }
    
     #validation-response{
