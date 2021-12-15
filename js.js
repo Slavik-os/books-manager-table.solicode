@@ -1,176 +1,108 @@
-// create a new row Elements 
-let edite ; 
-let pChilds;
-function addRow(content){
-            let td = document.createElement('td');
-            td.appendChild(document.createTextNode(content));
-            row.appendChild(td);
-            table.appendChild(row);
-        }
+document.getElementById('submit').addEventListener('click',()=>{
 
-// add icons whenever row is made 
-function addIcons(){
-    let td = document.createElement('td');
-    let edit = document.createElement('i');
-    let trash = document.createElement('i');
-    edit.className = 'fas';
-    edit.className+=' fa-edit'
-
-    td.appendChild(edit);
-
-    trash.className = 'fas';
-    trash.className+=' fa-trash-alt';
-    trash.className+=' delete'
+    //Defaults :
+    document.getElementById('validation-response').innerText=''; // remove The Validation Text 
+    let table = document.getElementById('table-manager');
+    let row = document.createElement('tr'); // create a new Tr each time Clicked 
+    let nameAuth = document.getElementById('auth-name');
+    let title = document.getElementById('title');
+    let type = document.getElementById('bookTypes');
+    let price = document.getElementById('money');
+    let date = document.getElementById('date');
+    let radio = document.querySelector('input[name="r"]:checked');
+    let err = []; 
+    //End Defaults 
     
-    td.appendChild(trash);
-    row.append(td);
-}
-
-
-
-        // To not preduse a mess in global scooping .
-        let row;
-        let table;
-        
-        function check() {
-            document.getElementById('validation-response').innerHTML='';
-            // get data from user
-            let date = document.querySelectorAll('input[type="date"]');
-            let  dateValue= date[0].value;
-            let d = new Date(dateValue);
-            let dateTr = d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear();
-            date[0].style.border='none';
-
-            priceF = document.getElementById('money'); 
-            priceF.style.border = 'none';
-            
-            price = priceF.value.trim();
-            let nameV = document.getElementById('auth-name');
-            nameV.style.border ='none';
-            let name = nameV.value.trim();
-            
-            let selected = document.getElementById('bookTypes').value;
-            let titleV = document.getElementById('title');
-            titleV.style.border='none';
-            title = titleV.value;
-
-            let rdbs = document.querySelectorAll('input[name="radAnswer"]');
-            let lang;
-                for (let i=0;i < rdbs.length;i++) {
-                    if (rdbs[i].checked) {
-                        lang = rdbs[i].value;
-                    }
-                }
-             
-            let er = [];
-            priceReg= '(^(\\d{1,5},\\d{1,2})$)|(^(\\d{1,5})$)';
-            function setErr(namevalue,elemnt,reg,message){
-                const validReg = RegExp(reg,'g');
-                if(!validReg.test(namevalue)) {
-                    
-                    er.push(true);
-                    elemnt.style.border = '3px solid #e30729' ;
-                }
-                
+    function validate(elem,reg){
+            let regEX= RegExp(reg,'g');
+            if(!regEX.test(elem.value)){
+                elem.style.border = '1px solid red';
+                err.push('error');
             }
-            setErr(price,priceF,priceReg,'Enter a valid value');
-            setErr(title,titleV,'\\w','Enter a valid value');
-            if(date[0].value===''){
-                date[0].style.border='3px solid #e30729';
-                er.push('true'); 
-            }else {date[0].style.border='none';}
-            setErr(name,nameV,'\\w','Enter a valid value');
-            
-            if(lang === undefined){
-                er.push('true');
+            if(elem.value==''){
+                elem.style.border = '1px solid red';
+                err.push('error');
             }
-            
-            
-            function addToTable() {
-                 edite = document.getElementsByClassName('fa-edit');
-                 // declare here to avoid local scooping only  
-                table = document.querySelector('#table-manager');
-                row = document.createElement('tr');
-                row.className = 'row';
-               
-                // Display The table when executed
-
-                document.getElementById('table-container').style.display='flex';
-               
-                // check for length and relpace 
-                
-                function removeLen(elm) {
-                    let l = [] ;
-                    if (elm.length > 26){
-                        l = elm.split("");
-                        for(let i = 0; 24 < l.length;i++){
-                            l.splice(l.length-1);
-                        }
-                    return l.join('')+'...';
-                    } else{return elm;}
-                }
-
-                removeLen(name);
-                // Add Rows
-                addRow(dateTr);
-                addRow('$'+price);
-                addRow(selected);
-                addRow(removeLen(title));
-                addRow(removeLen(name));
-                addRow(lang);
-                addIcons(); 
-                
-                
-                // delete row 
-                let remove = document.getElementsByClassName('delete');
-                for (let i = 0; i < remove.length ;i ++){
-                    remove[i].onclick =()=> {
-                        remove[i].closest('.row').style.display ='none';
-                    }
-                }
-                
-                // edite row
+            else{
+                elem.style.border = 'none';
+            }
+        }
     
-            }
-            // add row when err is false
-            if (er.length !=0){
-                document.getElementById('validation-response').innerText='Please Enter a valid Values';
-            }else {
-                addToTable();
-            }
-        if(edite != undefined){
-            createEdite();    
-            }
-        } 
-        function createEdite(){
-            edite = document.getElementsByClassName('fa-edit');
-            for (let i = 0 ; i < edite.length ;i++){
-                edite[i].onclick = ()=>{
-                        pChilds =  edite[i].closest('.row').children;
-                        edite[i].setAttribute('onclick','saveEdite()');
-                        edite[i].className += ' fa-check';
-                        edite[i].classList.remove('fa-edit');
-                        for(j=0;j < pChilds.length-1;j++){
-                            pChilds[j].setAttribute('contenteditable','true');
-                        }
+    
+    validate(title,'\\w');
+    validate(nameAuth,'\\w')
+    validate(price,'(^(\\d{1,5},\\d{1,2})$)|(^(\\d{1,5})$)');
+    validate(date,'\\w');
+    
+    if(radio == null){
+        alert('Select a type');
+        err.push('error');
+    }
+    function createTd(elem){
+        let td = document.createElement('td');
+        let text = document.createTextNode(elem);
+        td.appendChild(text);
+        row.append(td);
+        table.append(row);
+    }
+    
+    function removeLength(elem) { // remove The unnecessary Charachters and replace with dotes "..."
+            let l = [] ;
+            if (elem.length > 26){
+                l = elem.split("");
+                for(let i = 0; 24 < l.length;i++){
+                    l.splice(l.length-1);
                 }
-            
-            }
-
-        }       
-
-        function saveEdite(){
-            let check = document.getElementsByClassName('fa-check');
-            if(check.length === 0) {
-            createEdite();
-            
-            } else{
-                for(let i =0 ; i < check.length;i++){
-                for(j=0;j < pChilds.length-1;j++){
-                    pChilds[j].setAttribute('contenteditable','false');
-                }
-                check[i].className +=' fa-edit';
-                check[i].classList.remove('fa-check');
-            }
-        }
-        }
+            return l.join('')+'.....';
+            } else{return elem}
+    }
+    function createIcons(){
+        let editIcon = document.createElement('i');
+        let deleteIcon = document.createElement('i');
+        let td = document.createElement('td');
+        editIcon.className += 'fa fa-edit';
+        editIcon.setAttribute('onclick','edited(this);');
+        deleteIcon.className +='fa fa-trash';
+        deleteIcon.setAttribute('onclick','remove(this);')
+        td.appendChild(editIcon);
+        td.appendChild(deleteIcon);
+        row.appendChild(td);
+        table.append(row);    
+    }
+    
+    
+    if(err.length !=0){ 
+        document.getElementById('validation-response').innerText='Please Enter a Valid input';
+    }
+    else {
+    
+        table.style.display='table';
+        createTd(date.value);
+        createTd('$ '+price.value);
+        createTd(type.value);
+        createTd(removeLength(nameAuth.value));
+        createTd(removeLength(title.value));
+        createTd(radio.value)
+        createIcons();
+        console.log(removeLength(title.value));
+    }
+    });
+    
+    function edited(elem){
+        elem.className += ' fa-check';
+        elem.classList.remove('fa-edit');
+        elem.parentElement.parentElement.setAttribute('contenteditable','true');
+        elem.removeAttribute('onclick');
+        elem.setAttribute('onclick','checked(this)');
+    }
+    
+    function checked(elem){
+        elem.className += ' fa-edit';
+        elem.classList.remove('fa-check');
+        elem.parentElement.parentElement.setAttribute('contenteditable','false');
+        elem.removeAttribute('onclick');
+        elem.setAttribute('onclick','edited(this)');
+    }
+    function remove(elem){
+        elem.parentElement.parentElement.remove();
+    }

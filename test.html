@@ -4,25 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="main.css">
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="value">
-    <button onclick="submit()">submit</button>
-  <script>
-      function submit(){
-          let t = document.getElementById('value');
-          let l = []
-        
-         if (t.value.length > 20){
-             l = t.value.split('');
-             for (let i = 0; 19 < l.length;i++){
-                l.splice(l.length -1);
-            }
-         }
-         console.log(l.join('')+'...');
-        }
-      
-  </script>
+    
+    <div class="header">
+        <h2>Books Table Manager</h2>
+        <div class="content-holder">
+            <div class="text-input">
+                <input type="date" id='date'>
+                <span class="LabelIcon"><i class="far fa-clock"></i></span>
+            </div>
+
+            <div class="text-input">
+                <input id="auth-name" placeholder="Auth Name...." type="text">
+                <span class="LabelIcon"><i class="fas fa-user"></i></span>
+            </div>
+         
+            <div class="text-input select-type">
+                <select name="Type" id="bookTypes">
+                    <option value="classics">Classics</option>
+                    <option value="comic">Comic</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="action">Action</option>
+                </select>
+                <span class="LabelIcon"><i class="fas fa-book"></i></span>
+            </div>
+
+            <div class="text-input">
+                <input id="title" placeholder="Title...." type="text">
+                <span class="LabelIcon"><i class="fas fa-heading"></i></span>
+            </div>
+           
+            <div class="text-input radio">
+               <span><input type="radio" value="Frensh" name="r"><label for="#">Frensh</label></span> 
+                <span> <input type="radio" value="English" name="r"> <label for="#">English</label></span>
+                <span><input type="radio" value="Arabic" name="r"> <label for="#">Arabic</label></span>
+            </div>
+
+            <div class="text-input">
+                <input id="money" placeholder="Price...." type="text">
+                <span class="LabelIcon"><i class="fas fa-money-bill-wave"></i></span>
+            </div>
+                <button  id="submit">Submit</button>    
+        </div>
+    </div>
+    <div id="validation-response"></div> 
+    <div id="table-container">
+       <table id="table-manager" cellspacing="0" cellpadding="0">
+            <tr>
+                <th>Date</th>
+                <th>Price</th>
+                <th>Type</th>
+                <th>Auth.Name</th>
+                <th>Title</th>
+                <th>language</th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+    <script src='js.js'></script>
+
+
 </body>
 </html>

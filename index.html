@@ -14,7 +14,7 @@
         <h2>Books Table Manager</h2>
         <div class="content-holder">
             <div class="text-input">
-                <input type="date">
+                <input type="date" id='date'>
                 <span class="LabelIcon"><i class="far fa-clock"></i></span>
             </div>
 
@@ -39,16 +39,16 @@
             </div>
            
             <div class="text-input radio">
-               <span><input type="radio" value="Frensh" name="radAnswer"><label for="#">Frensh</label></span> 
-                <span> <input type="radio" value="English" name="radAnswer"> <label for="#">English</label></span>
-                <span><input type="radio" value="Arabic" name="radAnswer"> <label for="#">Arabic</label></span>
+               <span><input type="radio" value="Frensh" name="r"><label for="#">Frensh</label></span> 
+                <span> <input type="radio" value="English" name="r"> <label for="#">English</label></span>
+                <span><input type="radio" value="Arabic" name="r"> <label for="#">Arabic</label></span>
             </div>
 
             <div class="text-input">
                 <input id="money" placeholder="Price...." type="text">
                 <span class="LabelIcon"><i class="fas fa-money-bill-wave"></i></span>
             </div>
-                <button onclick="check()" id="sbt">Submit</button>    
+                <button  id="submit">Submit</button>    
         </div>
     </div>
     <div id="validation-response"></div> 
@@ -58,8 +58,8 @@
                 <th>Date</th>
                 <th>Price</th>
                 <th>Type</th>
-                <th>Title</th>
                 <th>Auth.Name</th>
+                <th>Title</th>
                 <th>language</th>
                 <th></th>
             </tr>

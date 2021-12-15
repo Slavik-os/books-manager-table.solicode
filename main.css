@@ -7,7 +7,7 @@
 body {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(211.58deg, rgba(114, 9, 110, 0.93) 19.03%, rgba(17, 62, 130, 0.78) 74%);
+    background: linear-gradient(211.58deg, rgba(99, 13, 96, 0.93) 19.03%, rgba(17, 62, 130, 0.78) 74%);
 }
 .header {
     display: flex;
@@ -48,6 +48,7 @@ input[type=text]{
     font-size : 16px;
     box-shadow: 11px 7px 4px rgba(0, 0, 0, 0.25);
 }
+select , option {background: none;}
 input[type=date] {
     border : none ;
     color: #827676;
@@ -167,10 +168,10 @@ option {
     #table-container {
         padding : 5%;
         width: 100%;
-        display: none;
         justify-content: center;
     }
     table {
+        display: none;
         font-family: 'Roboto';
         background: #fff;
         width: 1415px   ;
@@ -209,10 +210,13 @@ option {
     table tr:hover {
         background : #ddd;
     }
-    .fa-trash-alt {
+    .fa-trash {
         cursor: pointer;
         color : red ;
         padding-left : 10px;
+    }
+    .fa {
+        font-size : 20px;
     }
     .fa-edit , .fa-check{
         cursor: pointer;

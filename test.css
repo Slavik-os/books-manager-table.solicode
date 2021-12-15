@@ -1,0 +1,45 @@
+* {
+    padding : 0 ; 
+    margin :0 ; 
+    box-sizing:  border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+table{
+    font-family: 'Roboto';
+    background: #fff;
+    width: 1415px   ;
+    margin : 0 ;
+    border : 1px solid black ;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+th {
+    letter-spacing: 0.04em;
+    font-size : 22px;
+    padding-left : 80px;
+    font-weight: normal;
+    background: #342D4A;
+    padding-top: 12px;
+    border-collapse: collapse;
+    margin : 0 ;
+    padding-bottom: 12px;
+    text-align: left;
+    color: white;
+}
+table tr td{
+    border : 1px solid black;
+    text-align: center;
+    letter-spacing: 0.04em;
+    height: 75px;
+    padding-left : 80px;
+}
+.fa {
+    cursor: pointer;
+    padding :20px;
+    font-size : 30px;
+}
