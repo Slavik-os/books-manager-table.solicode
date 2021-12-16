@@ -70,12 +70,10 @@ document.getElementById('submit').addEventListener('click',()=>{
         table.append(row);    
     }
     
-    
     if(err.length !=0){ 
         document.getElementById('validation-response').innerText='Please Enter a Valid input';
     }
     else {
-    
         table.style.display='table';
         createTd(date.value);
         createTd('$ '+price.value);
@@ -83,9 +81,8 @@ document.getElementById('submit').addEventListener('click',()=>{
         createTd(removeLength(nameAuth.value));
         createTd(removeLength(title.value));
         createTd(radio.value)
-        createIcons();
-        console.log(removeLength(title.value));
-    }
+        createIcons();     
+        }
     });
     
     function edited(elem){

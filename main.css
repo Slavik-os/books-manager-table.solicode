@@ -173,8 +173,7 @@ option {
     table {
         display: none;
         font-family: 'Roboto';
-        background: #fff;
-        width: 1415px   ;
+        width: 1500px;
         margin : 0 ;
         border : none ;
         border-spacing: 0;
@@ -203,9 +202,6 @@ option {
         background : #ddd;
     }
 
-    table tr:nth-child(odd){
-        background:  #eceaea;
-    }
 
     table tr:hover {
         background : #ddd;
@@ -222,14 +218,30 @@ option {
         cursor: pointer;
         color  : #000;
     }
+
+    table tr {background : #fff;}
+    table tr:nth-child(odd){
+        background:  #eceaea;
+    }
+
     td[contenteditable="true"]:focus {
         outline: 3px solid #72096E;
     }
-   
+   table tr:not(:first-child){
+        animation-name: addTable;
+        animation-duration: 1s;
+        animation-timing-function: 1s;
+    }
     #validation-response{
         font-size : 30px;
         font-family: 'Roboto';
         text-shadow: 13px 0px 11px rgba(0, 0, 0, 0.58);
         color : #fff;
         text-align: center;
+    }
+
+
+    @keyframes addTable {
+        from {transform: translateX(40%);}
+        to {transform: translateX((0));}
     }
